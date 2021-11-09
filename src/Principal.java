@@ -39,13 +39,16 @@ public class Principal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(906, 663));
         getContentPane().setLayout(null);
 
+        jButton2.setBackground(new java.awt.Color(255, 51, 51));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reporte-de-negocios 46px.png"))); // NOI18N
         jButton2.setText("Reportes");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reporte-de-negocios 64px.png"))); // NOI18N
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(jButton2);
         jButton2.setBounds(110, 370, 200, 90);
 
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clasificacion 46.png"))); // NOI18N
         jButton1.setText("Clientes");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -59,6 +62,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(110, 120, 200, 110);
 
+        jButton3.setBackground(new java.awt.Color(255, 51, 51));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/coche 46.png"))); // NOI18N
         jButton3.setText("Autos");
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -72,9 +76,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(110, 250, 200, 90);
 
+        jButton4.setBackground(new java.awt.Color(255, 51, 51));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salida 46px.png"))); // NOI18N
         jButton4.setText("Salir");
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salida 64px.png"))); // NOI18N
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(jButton4);
         jButton4.setBounds(110, 480, 200, 110);

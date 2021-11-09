@@ -151,6 +151,11 @@ String codauto = "1";
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4);
         jButton4.setBounds(980, 450, 110, 100);
 
@@ -362,7 +367,17 @@ String auto2[]=jcbAutos.getSelectedItem().toString().split(" ");
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        if(jcbAutos.getSelectedItem()!=null){
+            String auto2[]=jcbAutos.getSelectedItem().toString().split(" ");
+            BuscarAuto2(auto2[0]);
+            eliminarAuto=auto2[0];
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        modificarAutos();
+    }//GEN-LAST:event_jButton4ActionPerformed
 String cliente;
     private void BuscarCliente() {
         Conexion conect = new Conexion("ejeautos");
@@ -483,6 +498,48 @@ String cliente;
         } catch (HeadlessException | SQLException x) {
             System.out.println(x);}
     }
+    String eliminarAuto;
+    public void Eliminar(){
+       try {
+           Conexion conect = new Conexion("ejeautos");
+           con = conect.getConexion();
+           st = con.createStatement();
+           PreparedStatement ps;    
+           String sql = "UPDATE autos set Estado='Inactivo' WHERE codauto="+eliminarAuto;
+           ps = conect.getConexion().prepareStatement(sql);
+           ps.execute();
+           JOptionPane.showMessageDialog(null,"REGISTRO ACTUALIZADO CORRECTAMENTE", "ATENCION", 1);
+           limpiar();
+           con.close();
+       } catch (HeadlessException | SQLException e) {
+           JOptionPane.showMessageDialog(null, "REGISTRO NO SE PUDO ACTUALIZAR" + e, "ATENCION!", 0);
+       }
+   } 
+    
+   public void modificarAutos(){
+        try {
+		//COLOQUE EL NOMBRE DE SU BD
+                Conexion conect = new Conexion("ejeautos");
+                con = conect.getConexion();
+                st = con.createStatement();
+                PreparedStatement ps;
+            String cod = null;
+
+		//COLOQUE EL NOMBRE DE SU TABLA Y EL NOMBRE DE SUS CAMPOS
+                String sql = "UPDATE autos SET Matricula=?, Marca=?, anio=?, Color=? WHERE codauto ="+ cod;
+                ps = conect.getConexion().prepareStatement(sql);
+                ps.setString(1, jtfMatricula.getText());
+                ps.setString(2, jtfMarca.getText());
+                ps.setString(3, jtfanio.getText());
+                ps.setString(4, jcbColor.getSelectedItem().toString());
+                ps.execute();
+                JOptionPane.showMessageDialog(null, "REGISTRO ACTUALIZADO CORRECTAMENTE", "ATENCION!", 1);
+                limpiar();
+                con.close();                
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(null, "REGISTRO NO SE PUDO ACTUALIZAR" + e, "ATENCION!", 0);
+            }
+   } 
     
 public void limpiar(){
 jtfMarca.setText("");

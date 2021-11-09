@@ -338,7 +338,7 @@ Modificar(cod2);        // TODO add your handling code here:
         try {
             con = conect.getConexion();
             //COLOQUE EN LA SENTENCIA SQL EL NOMBRE DE SU BD Y LOS NOMBRE DE LOS CAMPOS
-            String sql = "INSERT INTO clientes (codcliente,nombre,direccion,telefono,estado) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO clientes (codcliente,nombre_clientes,direccion,telefono,estado) VALUES (?,?,?,?,?)";
             PreparedStatement ps = conect.getConexion().prepareStatement(sql);
             //COLOQUE LOS NOMBRES DE SUS CUADROS DE DIALOGO (JTEXTFIELD)
             ps.setInt(1, 0);
@@ -367,7 +367,7 @@ Modificar(cod2);        // TODO add your handling code here:
                 ResultSet rs = st.executeQuery(senten);
 
                 while (rs.next()) {
-                    jtfNombre.setText(rs.getString("nombre"));
+                    jtfNombre.setText(rs.getString("nombre_clientes"));
                     jtfDir.setText(rs.getString("direccion"));
                     jffTelefono.setText(rs.getString("telefono"));
                     encontrado = "SI";
@@ -391,14 +391,14 @@ Modificar(cod2);        // TODO add your handling code here:
         Conexion conect = new Conexion("ejeautos");
         
             try {
-                String senten2 = "SELECT * FROM clientes WHERE nombre LIKE '"+cod+"'";
+                String senten2 = "SELECT * FROM clientes WHERE nombre_clientes LIKE '"+cod+"'";
                 encontrado = "NO";
                 con = conect.getConexion();
                 st2 = con.createStatement();
 
                 ResultSet rs2 = st2.executeQuery(senten2);
                 while (rs2.next()) {
-                    jtfNombre.setText(rs2.getString("nombre"));
+                    jtfNombre.setText(rs2.getString("nombre_clientes"));
                     jtfDir.setText(rs2.getString("direccion"));
                     jffTelefono.setText(rs2.getString("telefono"));
                     encontrado = "SI";
@@ -451,7 +451,7 @@ Modificar(cod2);        // TODO add your handling code here:
                 PreparedStatement ps;
 
 		//COLOQUE EL NOMBRE DE SU TABLA Y EL NOMBRE DE SUS CAMPOS
-                String sql = "UPDATE clientes SET nombre=?, direccion=?, telefono=? WHERE codcliente ="+ cod;
+                String sql = "UPDATE clientes SET nombre_clientes=?, direccion=?, telefono=? WHERE codcliente ="+ cod;
                 ps = conect.getConexion().prepareStatement(sql);
                 ps.setString(1, jtfNombre.getText());
                 ps.setString(2, jtfDir.getText());

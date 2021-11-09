@@ -1,4 +1,5 @@
 import java.sql.*;
+import javax.swing.JOptionPane;
 public class Conexion 
 {
      Connection c;
@@ -21,7 +22,7 @@ public class Conexion
             System.out.println("Base de Datos OK");
 
         } catch (ClassNotFoundException | SQLException x) {
-            System.out.println("Error al tratar de conectar a la BD! " + x);
+            JOptionPane.showMessageDialog(null, "Error al tratar de conectar a la Base de Datos!", "", JOptionPane.WARNING_MESSAGE);
         }
     }
 
